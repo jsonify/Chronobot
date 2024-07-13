@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2ihymck8bc8"]
+[gd_scene load_steps=4 format=3 uid="uid://c2ihymck8bc8"]
 
 [ext_resource type="PackedScene" uid="uid://bhtccf1sdry8b" path="res://levels/base_level.tscn" id="1_woocb"]
 [ext_resource type="PackedScene" uid="uid://dk72birkiceu2" path="res://enemies/enemy_crab.tscn" id="2_svpy0"]
-[ext_resource type="Texture2D" uid="uid://c1abchopsypxy" path="res://background/background.png" id="3_sp1kj"]
-[ext_resource type="Texture2D" uid="uid://cxp8bys240lfo" path="res://background/middleground.png" id="4_rq16s"]
+[ext_resource type="PackedScene" uid="uid://dgqfy74wlnvke" path="res://parallax_background.tscn" id="3_7rii4"]
 
 [node name="TestLevel" instance=ExtResource("1_woocb")]
 
@@ -36,31 +35,4 @@ position = Vector2(-125, 83)
 [node name="Point2" type="Marker2D" parent="EnemyCrab2/PatrolPoints" index="1"]
 position = Vector2(42, 83)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="4"]
-offset = Vector2(0, 384.69)
-transform = Transform2D(1, 0, 0, 1, 0, 384.69)
-
-[node name="BackgroundParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
-motion_mirroring = Vector2(480, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BackgroundParallaxLayer" index="0"]
-texture = ExtResource("3_sp1kj")
-centered = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/BackgroundParallaxLayer" index="1"]
-position = Vector2(240, 0)
-texture = ExtResource("3_sp1kj")
-centered = false
-
-[node name="MiddlegroundParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
-motion_scale = Vector2(0.85, 1)
-motion_mirroring = Vector2(544, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MiddlegroundParallaxLayer" index="0"]
-texture = ExtResource("4_rq16s")
-centered = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/MiddlegroundParallaxLayer" index="1"]
-position = Vector2(272, 0)
-texture = ExtResource("4_rq16s")
-centered = false
+[node name="ParallaxBackground" parent="." index="4" instance=ExtResource("3_7rii4")]
