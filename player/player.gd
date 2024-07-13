@@ -9,8 +9,8 @@ var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var max_horizontal_speed : int = 300
 @export var slow_down_speed : int = 1700
 
-@export var jump_strength : int = -300
-@export var jump_horizontal_speed : int = 1000
+@export var jump_strength : int = -400
+@export var jump_horizontal_speed : int = 500
 @export var max_jump_horizontal_speed : int = 300
 
 
