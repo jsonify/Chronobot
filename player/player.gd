@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
-const GRAVITY = 1000
+#const GRAVITY = 1000
+var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 @export var speed : int = 300
 @export var jump_strength : int = -300
 @export var jump_horizontal : int = 100

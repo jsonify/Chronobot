@@ -91,3 +91,9 @@ frame_progress = 0.0843877
 position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_wmgkv")
 debug_color = Color(0.723011, 0.245506, 1, 0.42)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
