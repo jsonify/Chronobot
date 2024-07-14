@@ -12,6 +12,7 @@ var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var patrol_points : Node
 @export var wait_time : int = 3
 @export var health_amount : int = 3
+@export var damage_amount : int = 1
 
 enum State {
 	IDLE,
