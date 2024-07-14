@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var muzzle : Marker2D = $Muzzle
+@onready var hit_animation_player = $HitAnimationPlayer
 
 var bullet = preload("res://player/bullet.tscn")
 var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -110,4 +111,5 @@ func import_movement():
 func _on_hurtbox_body_entered(body : Node2D):
 	if body.is_in_group("Enemy"):
 		print("Enemy entered ", body.damage_amount)
+		hit_animation_player.play("hit")
 		HealthManager.decrease_health(body.damage_amount)
