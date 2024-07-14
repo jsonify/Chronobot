@@ -3,12 +3,15 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var timer = $Timer
 
+var enemy_death_effect = preload("res://enemies/enemy_death_effect.tscn")
+
 var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
 #const GRAVITY = 1000
 
 @export var speed : int = 1500
 @export var patrol_points : Node
 @export var wait_time : int = 3
+@export var health_amount : int = 3
 
 enum State {
 	IDLE,
@@ -90,3 +93,20 @@ func player_animations():
 		animated_sprite_2d.play("idle")
 	elif current_state == State.WALK:
 		animated_sprite_2d.play("walk")
+
+
+func _on_hurtbox_area_entered(area : Area2D):
+	print("Hurtbox area entered")
+	if area.get_parent().has_method("get_damage_amount"):
+		var node = area.get_parent() as Node
+		health_amount -= node.damage_amount
+		print("Health amount: ", health_amount)
+		
+		if health_amount <= 0:
+			death_effect()
+
+func death_effect():
+	var enemy_death_effect_instance = enemy_death_effect.instantiate() as Node2D
+	enemy_death_effect_instance.global_position = global_position
+	get_parent().add_child(enemy_death_effect_instance)
+	queue_free()
