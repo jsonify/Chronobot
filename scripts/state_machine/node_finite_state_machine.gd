@@ -1,4 +1,4 @@
-class_name NodeFiniteStatMachine
+class_name NodeFiniteStateMachine
 extends Node
 
 @export var initial_node_state : NodeState
@@ -15,25 +15,17 @@ func _ready():
 	if initial_node_state:
 		initial_node_state.enter()
 		current_node_state = initial_node_state
-	
-	print("initial: ", initial_node_state)
-	print("current: ", current_node_state)
 
 
 func _process(delta : float):
-	print("current _process: ", current_node_state)
-	
 	if current_node_state:
 		current_node_state.on_process(delta)
 
 
 func _physics_process(delta : float):
-	print("current _physics_process: ", current_node_state)
-
 	if current_node_state:
 		current_node_state.on_physics_process(delta)
-	
-	print(current_node_state_name)
+
 	print("Current state: ", current_node_state_name.to_lower())
 
 
@@ -52,7 +44,6 @@ func transition_to(node_state_name : String):
 	new_node_state.enter()
 	
 	current_node_state = new_node_state
-	print("current: ", current_node_state_name)
 	current_node_state_name = current_node_state_name.to_lower()
 	
 

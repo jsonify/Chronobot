@@ -1,6 +1,6 @@
 extends Node
 
-@export var node_finite_state_machine : NodeFiniteStatMachine
+@export var node_finite_state_machine : NodeFiniteStateMachine
 
 
 func _on_attack_area_2d_body_entered(body : Node2D):
