@@ -134,9 +134,13 @@ initial_node_state = NodePath("IDLE")
 script = ExtResource("7_31u20")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+slow_down_speed = 300
 
-[node name="ATTACK" type="Node" parent="StateMachine"]
+[node name="ATTACK" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
 script = ExtResource("8_pwxrw")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+speed = 100
 
 [node name="AttackArea2D" type="Area2D" parent="."]
 collision_layer = 4
