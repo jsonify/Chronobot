@@ -47,7 +47,7 @@ func player_falling(delta : float):
 	if !is_on_floor():
 		velocity.y += GRAVITY * delta
 
-func player_idle(delta):
+func player_idle(_delta):
 	if is_on_floor():
 		current_state = State.IDLE
 
@@ -74,7 +74,7 @@ func player_jump(delta : float):
 		velocity.x += direction * jump_horizontal_speed * delta
 		velocity.x = clamp(velocity.x, -max_jump_horizontal_speed, max_jump_horizontal_speed)
 
-func player_shooting(delta):
+func player_shooting(_delta):
 	var direction = import_movement()
 	
 	if direction != 0 and Input.is_action_just_pressed("shoot"):

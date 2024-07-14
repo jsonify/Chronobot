@@ -1,39 +1,39 @@
 [gd_scene load_steps=15 format=3 uid="uid://dk72birkiceu2"]
 
-[ext_resource type="Script" path="res://enemies/enemy_crab.gd" id="1_la8lw"]
-[ext_resource type="Texture2D" uid="uid://dyjf71y764jd" path="res://enemies/crab-idle.png" id="1_x47he"]
-[ext_resource type="Texture2D" uid="uid://dsdwkfddm00iy" path="res://enemies/crab-walk.png" id="2_til5n"]
+[ext_resource type="Script" path="res://enemies/crab/enemy_crab.gd" id="1_4updt"]
+[ext_resource type="Texture2D" uid="uid://dyjf71y764jd" path="res://enemies/crab/crab-idle.png" id="2_esbks"]
+[ext_resource type="Texture2D" uid="uid://dsdwkfddm00iy" path="res://enemies/crab/crab-walk.png" id="3_rl3r1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4gl0t"]
-atlas = ExtResource("1_x47he")
+atlas = ExtResource("2_esbks")
 region = Rect2(0, 0, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sjs4b"]
-atlas = ExtResource("1_x47he")
+atlas = ExtResource("2_esbks")
 region = Rect2(48, 0, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fi0ad"]
-atlas = ExtResource("1_x47he")
+atlas = ExtResource("2_esbks")
 region = Rect2(96, 0, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocrge"]
-atlas = ExtResource("1_x47he")
+atlas = ExtResource("2_esbks")
 region = Rect2(144, 0, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jc4lr"]
-atlas = ExtResource("2_til5n")
+atlas = ExtResource("3_rl3r1")
 region = Rect2(0, 0, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xhgwl"]
-atlas = ExtResource("2_til5n")
+atlas = ExtResource("3_rl3r1")
 region = Rect2(48, 0, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kb57d"]
-atlas = ExtResource("2_til5n")
+atlas = ExtResource("3_rl3r1")
 region = Rect2(96, 0, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l5ctn"]
-atlas = ExtResource("2_til5n")
+atlas = ExtResource("3_rl3r1")
 region = Rect2(144, 0, 48, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xvq3w"]
@@ -80,7 +80,7 @@ radius = 13.0
 radius = 16.0312
 
 [node name="EnemyCrab" type="CharacterBody2D"]
-script = ExtResource("1_la8lw")
+script = ExtResource("1_4updt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -14)
