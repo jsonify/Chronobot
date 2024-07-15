@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var hit_animation_player = $HitAnimationPlayer
 
 var bullet = preload("res://player/bullet.tscn")
+var player_death_effect = preload("res://player/player_death_effect/player_death_effect.tscn")
 var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @export var speed : int = 1000
@@ -43,6 +44,7 @@ func _physics_process(delta : float):
 	
 	player_animations()
 	#print("State: ", State.keys()[current_state])
+
 
 func player_falling(delta : float):
 	if !is_on_floor():
@@ -85,6 +87,13 @@ func player_shooting(_delta):
 		get_parent().add_child(bullet_instance)
 		current_state = State.SHOOT
 
+func player_death():
+	var player_death_effect_instance = player_death_effect.instantiate() as Node2D
+	player_death_effect_instance.global_position = global_position
+	get_parent().add_child(player_death_effect_instance)
+	queue_free()
+
+
 func player_muzzle_position():
 	var direction = import_movement()
 	if direction > 0:
@@ -113,3 +122,6 @@ func _on_hurtbox_body_entered(body : Node2D):
 		print("Enemy entered ", body.damage_amount)
 		hit_animation_player.play("hit")
 		HealthManager.decrease_health(body.damage_amount)
+		
+	if HealthManager.current_health == 0:
+		player_death()
