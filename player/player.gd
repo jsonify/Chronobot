@@ -15,6 +15,7 @@ var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var jump_strength : int = -400
 @export var jump_horizontal_speed : int = 500
 @export var max_jump_horizontal_speed : int = 300
+@export var jump_count := 1
 
 
 enum State { 
@@ -26,6 +27,7 @@ enum State {
 
 var current_state : State
 var muzzle_position
+var current_jump_count : int
 
 func _ready():
 	current_state = State.IDLE
@@ -68,8 +70,17 @@ func player_run(delta : float):
 		current_state = State.RUN
 
 func player_jump(delta : float):
-	if Input.is_action_just_pressed("jump"):
+	var jump_input := Input.is_action_just_pressed("jump")
+	
+	if is_on_floor() and jump_input:
+		current_jump_count = 0
 		velocity.y = jump_strength
+		current_jump_count += 1
+		current_state = State.JUMP
+	
+	if !is_on_floor() and jump_input and current_jump_count < jump_count:
+		velocity.y = jump_strength
+		current_jump_count += 1
 		current_state = State.JUMP
 	
 	if !is_on_floor() and current_state == State.JUMP:

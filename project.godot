@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Chronobot"
-run/main_scene="res://levels/test_levels/test_level.tscn"
+run/main_scene="res://ui/main_menu_screen.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,9 @@ config/icon="res://icon.svg"
 GameManager="*res://scripts/game_manager.gd"
 HealthManager="*res://scripts/health_manager.gd"
 CollectableManager="*res://scripts/collectable_manager.gd"
+SettingsManager="*res://scripts/settings_manager.gd"
+SceneManager="*res://scripts/scene_manager.gd"
+InventoryManager="*res://scripts/inventory_manager.gd"
 
 [display]
 
@@ -62,6 +65,8 @@ shoot={
 2d_physics/layer_3="ENEMY"
 2d_physics/layer_4="PICKUP"
 2d_physics/layer_5="COLLECTABLE"
+2d_physics/layer_6="DOORS"
+2d_physics/layer_7="KEYS"
 
 [rendering]
 

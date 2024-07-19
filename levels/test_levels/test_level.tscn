@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2ihymck8bc8"]
+[gd_scene load_steps=9 format=3 uid="uid://c2ihymck8bc8"]
 
 [ext_resource type="PackedScene" uid="uid://bhtccf1sdry8b" path="res://levels/base_level.tscn" id="1_woocb"]
 [ext_resource type="PackedScene" uid="uid://dgqfy74wlnvke" path="res://parallax_background.tscn" id="3_7rii4"]
 [ext_resource type="PackedScene" uid="uid://ducv4d0hochm0" path="res://enemies/dino/enemy_dino.tscn" id="3_ta7l8"]
-[ext_resource type="PackedScene" uid="uid://dk72birkiceu2" path="res://enemies/crab/enemy_crab.tscn" id="4_r4g82"]
 [ext_resource type="PackedScene" uid="uid://b0mu4p0rkgenh" path="res://ui/game_screen.tscn" id="5_1f4kv"]
 [ext_resource type="PackedScene" uid="uid://bc5kksktreufu" path="res://collectables/blue_coin/blue_coin.tscn" id="5_p7pyl"]
 [ext_resource type="PackedScene" uid="uid://cnrtj3olqkeii" path="res://pickups/health_pickup/health_pickup.tscn" id="6_61s0e"]
+[ext_resource type="PackedScene" uid="uid://di5rigpbkqarw" path="res://levels/door/door.tscn" id="8_atxxc"]
+[ext_resource type="PackedScene" uid="uid://bxk0gdun3pe8h" path="res://levels/keys/key.tscn" id="8_iw18o"]
 
 [node name="TestLevel" instance=ExtResource("1_woocb")]
 
@@ -22,9 +23,6 @@ layer_0/tile_data = PackedInt32Array(-131072, 983040, 8, -65536, 983040, 8, -131
 [node name="EnemyDino" parent="Enemies" index="0" instance=ExtResource("3_ta7l8")]
 position = Vector2(587, -48)
 
-[node name="EnemyCrab" parent="Enemies" index="1" instance=ExtResource("4_r4g82")]
-position = Vector2(375, -53)
-
 [node name="Collectables" type="Node" parent="." index="3"]
 
 [node name="BlueCoin" parent="Collectables" index="0" instance=ExtResource("5_p7pyl")]
@@ -35,4 +33,20 @@ position = Vector2(204, -68)
 [node name="HealthPickup" parent="Pickups" index="0" instance=ExtResource("6_61s0e")]
 position = Vector2(458, -62)
 
-[node name="GameScreen" parent="." index="6" instance=ExtResource("5_1f4kv")]
+[node name="Door1" type="Node" parent="." index="5"]
+
+[node name="Door" parent="Door1" index="0" instance=ExtResource("8_atxxc")]
+position = Vector2(395, -48)
+rotation = 3.14159
+scale = Vector2(1, -1)
+next_scene = "Level1"
+key_id = "12345"
+
+[node name="Key" parent="Door1" index="1" instance=ExtResource("8_iw18o")]
+position = Vector2(119, -70)
+key_id = "12345"
+
+[node name="Player" parent="." index="6"]
+jump_count = 2
+
+[node name="GameScreen2" parent="." index="7" instance=ExtResource("5_1f4kv")]
