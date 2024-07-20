@@ -17,7 +17,7 @@ func on_physics_process(delta : float):
 	if GameInputEvents.shoot_input():
 		gun_shooting()
 	else:
-		print("nope")
+		print("Not actually shooting")
 
 	# transitioning states
 	
