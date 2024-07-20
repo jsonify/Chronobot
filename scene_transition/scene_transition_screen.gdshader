@@ -9,7 +9,7 @@ uniform float move_speed : hint_range(1.0, 5.0) = 0.15;
 void fragment() {
 	vec2 uv = UV * tiling_factor;
 	
-	uv.y += TIME * move_speed;
+	uv.y += TIME * -move_speed;
 	
 	uv = fract(uv);
 	float noise_value = texture(noise_texture, uv).r;
